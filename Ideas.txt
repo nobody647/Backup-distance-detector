@@ -1,0 +1,91 @@
+https://github.com/esp8266/Arduino
+
+
+
+Display module:
+	7-segment Display
+	Waits for wakeup
+	Displays recieved data
+	ESP
+
+Distance module:
+	Ultrasonic distance module
+		HC-SR04 + step up
+		HC-SR04P
+	ESP
+	Battery
+
+
+
+
+OPTION A:
+	Distance and display both battery powered
+
+	Distance module & display module start in deep sleep
+	Distance module wakes every X seconds to check distance
+	Display module wakes every X seconds to check for AP
+	If distance < 5m
+		Turn on AP
+		Wait for display to wake and connect
+		Stay awake and transmitting until distance > 5m
+
+		***MAJOR PROBLEMO***: Both modules are active if car is parked and I'm gone. No bueno
+
+Option B:
+	Display is USB powered, distance is battery powered
+
+	Display hosts a network
+	Distance in deep sleep, wakes every X seconds to check distance
+	If distance < 5m
+		Connect to AP
+		Transmit data until
+		If distance > 5m for more than X seconds:
+			Go back to deep sleep
+		If display switch is OFF:
+			Go to light sleep
+
+
+OPTIONS:
+	Deep sleep all the time
+		Distance module in deep sleep, wakes every X seconds, connects to AP, if distance < 5m connects to AP. If display switch is OFF, goes back to sleep
+		Pros:
+			Simple
+			Uses low current (if connecting to AP is fast)
+		Cons:
+			X second delay
+			Uses high current (if connecting to AP is slow)
+			Delay for connecting to AP
+			Need USB power for display
+			I dont' like it much
+
+	Light sleep all the time
+		Distance module in light sleep, if display switch is ON, display sends pings every X seconds
+		Pros:
+			Simple-ish
+			Uses consistent current
+			Doesn't waste power when not in Uses
+			Allows easy modification of firmware
+		Cons:
+			Might use more current than deep sleep
+			???
+
+Options Pt 2:
+	USB Power for display module
+		The AP will always be running. The switch will toggle requests for distance
+		Pros:
+			Faster connection time
+			Simpler
+		Cons:
+			Annoying
+	
+	Battery power for display module
+		The AP will only be on when the switch is on.
+		Pros:
+			Less Annoying
+		Cons:
+			Might be slower
+			Distance module has to check for AP to connect to
+
+
+		Hey dummy, you can switch between these modes on the fly without messing with the distance module. The distance module doesn't care whether the AP is always up or not. 
+		Have it try to connect periodically, and only send data when it recieves a request. This way, you can change the display from battery mode to USB mode without touching the distance module!
