@@ -1,28 +1,29 @@
 {
-	"configurations": [{
-		"name": "Win32",
-		"browse": {
-			"path": [
-				"${workspaceFolder}",
-				"C:\\Users\\Ian\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.1\\cores\\esp8266",
-				"C:\\Users\\Ian\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.1\\libraries\\ESP8266WiFi\\src"
-			],
-			"limitSymbolsToIncludedHeaders": true
-		},
-		"includePath": [
-			"${workspaceFolder}",
-			"C:\\Users\\Ian\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.1\\cores\\esp8266"
-		],
-		"defines": [
-			"_DEBUG",
-			"UNICODE",
-			"_UNICODE"
-		],
-		"compilerPath": "C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\bin\\\\cc.exe",
-		"cStandard": "c11",
-		"cppStandard": "c++17",
-		"intelliSenseMode": "clang-x64"
-
-	}],
-	"version": 4
+    "configurations": [
+        {
+            "name": "Win32",
+            "browse": {
+                "path": [
+                    "${workspaceFolder}",
+                    "C:\\Users\\Ian\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.1\\cores\\esp8266",
+                    "C:\\Users\\Ian\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.1\\libraries\\ESP8266WiFi\\src"
+                ],
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                "${workspaceFolder}",
+                "C:\\Users\\Ian\\AppData\\Local\\Arduino15\\packages\\esp8266\\hardware\\esp8266\\2.4.1\\cores\\esp8266"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\bin\\\\cc.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "clang-x64"
+        }
+    ],
+    "version": 4
 }
